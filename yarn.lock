@@ -2,10 +2,10 @@
 # yarn lockfile v1
 
 
-"@blockadelabs/sdk@^1.1.0":
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/@blockadelabs/sdk/-/sdk-1.1.0.tgz#c687e60df6966c9039760d74c65d6dd3b4071164"
-  integrity sha512-qkUuSBXOegR/5kVSFsnlq7y0wQb9kX2gDKxHdbU6HpEe0M5mXOYGzS9J1z8XAF/f4i7Mw3czxCPl6JTUDHMEgQ==
+"@blockadelabs/sdk@^1.1.1":
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/@blockadelabs/sdk/-/sdk-1.1.1.tgz#14de0f688ae37090625936fba81720d90d622ce9"
+  integrity sha512-dmBCkrXWMaoOhCK9ArglYQ/2C8B3T0X1d1kKDbSP28XjlzcGM5PsdBs6w8qn8HmVEFPLRODjRa0FKH/l++nqtQ==
   dependencies:
     axios "^1.3.4"
     dotenv "^16.0.3"
