@@ -1,63 +1,6 @@
 import { Request, Response } from "express";
 import { sdk } from "@/lib/sdk";
 
-export const getGenerators = async (req: Request, res: Response) => {
-  try {
-    const generators = await sdk.getGenerators();
-
-    return res.status(200).json(generators);
-  } catch (err) {
-    if (err && typeof err === "object" && "message" in err)
-      return res.status(400).json({ error: err.message });
-
-    return res
-      .status(400)
-      .json({ error: "Unexpected error retrieving generators" });
-  }
-};
-
-export const generateImagine = async (req: Request, res: Response) => {
-  try {
-    const { generator, generator_data: data, webhook_url } = req.body;
-
-    const generator_data: Record<string, any> =
-      typeof data === "string" ? JSON.parse(data) : data;
-
-    const files = req.files;
-
-    if (files) {
-      if (Array.isArray(files)) {
-        for (const file of files) {
-          const name = file.fieldname;
-
-          generator_data[name] = file.buffer;
-        }
-      } else {
-        for (const file of Object.entries(files)) {
-          const [name, value] = file;
-
-          generator_data[name] = value[0].buffer;
-        }
-      }
-    }
-
-    const imagineGeneration = await sdk.generateImagine({
-      generator,
-      generator_data,
-      webhook_url,
-    });
-
-    return res.status(200).json(imagineGeneration);
-  } catch (err) {
-    if (err && typeof err === "object" && "message" in err)
-      return res.status(400).json({ error: err.message });
-
-    return res
-      .status(400)
-      .json({ error: "Unexpected error generating imagine" });
-  }
-};
-
 export const getImagineById = async (req: Request, res: Response) => {
   try {
     const { id } = req.query;
